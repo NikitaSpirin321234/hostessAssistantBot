@@ -8,6 +8,7 @@ const {
 } = require("./helper.js");
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
+const port = process.env.PORT || 10000;
 
 process.on('uncaughtException', error => {
     console.log("uncaughtException: ", error);
