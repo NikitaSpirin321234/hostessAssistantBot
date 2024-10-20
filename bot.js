@@ -123,8 +123,10 @@ bot.catch(err => console.log("catched: ", err));
 
 bot.launch({
     webhook: {
-        domain: process.env.WEB_HOOK,
-        port: port
+        domain: process.env.SERVER_DOMAIN,
+        port: port,
+        path: process.env.SERVER_PATH,
+        secretToken: process.env.SERVER_KEY
     }
 })
 
