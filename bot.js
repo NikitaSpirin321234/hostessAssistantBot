@@ -123,7 +123,7 @@ bot.catch(err => console.log("catched: ", err));
 
 bot.launch({
     webhook: {
-        domain: "0.0.0.0",
+        domain: process.env.WEB_HOOK,
         port: port
     }
 })
