@@ -121,7 +121,12 @@ bot.on(message,async (ctx) => {
 
 bot.catch(err => console.log("catched: ", err));
 
-bot.launch()
+bot.launch({
+    webhook: {
+        domain: "0.0.0.0",
+        port: port
+    }
+})
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'))
