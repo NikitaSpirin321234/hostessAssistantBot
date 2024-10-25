@@ -124,7 +124,18 @@ bot.on(message,async (ctx) => {
 
 bot.catch(err => console.log("catched: ", err));
 
-bot.launch();
+// bot.launch();
+
+bot.launch({
+    webhook: {
+        // Public domain for webhook; e.g.: example.com
+        domain: "0.0.0.0",
+
+        // Port to listen on; e.g.: 8080
+        port: port
+    }
+})
+
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'))
