@@ -1,5 +1,6 @@
 const { Telegraf } = require('telegraf')
 const { message } = require('telegraf/filters')
+const http = require('http');
 require("dotenv").config();
 
 const mainModel = require("./model.js");
@@ -121,14 +122,7 @@ bot.on(message,async (ctx) => {
 
 bot.catch(err => console.log("catched: ", err));
 
-bot.launch({
-    webhook: {
-        domain: process.env.SERVER_DOMAIN,
-        port: port,
-        path: process.env.SERVER_PATH,
-        secretToken: process.env.SERVER_KEY
-    }
-})
+bot.launch();
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'))
@@ -136,4 +130,6 @@ process.once('SIGTERM', () => bot.stop('SIGTERM'))
 
 console.log(`${getNowTime()}: bot started!`);
 console.log(`${getNowTime()}`, mainModel);
+
+http.createServer().listen(port);
 
