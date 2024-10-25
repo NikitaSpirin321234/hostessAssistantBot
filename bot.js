@@ -1,15 +1,17 @@
 const { Telegraf } = require('telegraf')
 const { message } = require('telegraf/filters')
-const http = require('http');
 require("dotenv").config();
+const express = require("express");
 
 const mainModel = require("./model.js");
 const {
     getNowTime
 } = require("./helper.js");
 
+const app = express();
+
 const BOT_TOKEN = process.env.BOT_TOKEN;
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 3001;
 
 process.on('uncaughtException', error => {
     console.log("uncaughtException: ", error);
@@ -131,5 +133,9 @@ process.once('SIGTERM', () => bot.stop('SIGTERM'))
 console.log(`${getNowTime()}: bot started!`);
 console.log(`${getNowTime()}`, mainModel);
 
-http.createServer().listen(port);
+app.get("/", (req, res) => res.end());
 
+const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 120 * 1000;
