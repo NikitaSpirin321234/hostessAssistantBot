@@ -1,17 +1,17 @@
 const { Telegraf } = require('telegraf')
 const { message } = require('telegraf/filters')
 require("dotenv").config();
-const express = require("express");
+// const express = require("express");
 
 const mainModel = require("./model.js");
 const {
     getNowTime
 } = require("./helper.js");
 
-const app = express();
+// const app = express();
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
 process.on('uncaughtException', error => {
     console.log("uncaughtException: ", error);
@@ -124,17 +124,17 @@ bot.on(message,async (ctx) => {
 
 bot.catch(err => console.log("catched: ", err));
 
-// bot.launch();
+bot.launch();
 
-bot.launch({
-    webhook: {
-        // Public domain for webhook; e.g.: example.com
-        domain: process.env.DOMAIN,
+// bot.launch({
+//     webhook: {
+//         // Public domain for webhook; e.g.: example.com
+//         domain: process.env.DOMAIN,
 
-        // Port to listen on; e.g.: 8080
-        port: port
-    }
-})
+//         // Port to listen on; e.g.: 8080
+//         port: port
+//     }
+// })
 
 
 // Enable graceful stop
