@@ -11,7 +11,7 @@ const {
 const app = express();
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
-const port = process.env.PORT || 3001;
+// const port = process.env.PORT || 3001;
 
 process.on('uncaughtException', error => {
     console.log("uncaughtException: ", error);
@@ -124,17 +124,17 @@ bot.on(message,async (ctx) => {
 
 bot.catch(err => console.log("catched: ", err));
 
-// bot.launch();
+bot.launch();
 
-bot.launch({
-    webhook: {
-        // Public domain for webhook; e.g.: example.com
-        domain: "0.0.0.0",
+// bot.launch({
+//     webhook: {
+//         // Public domain for webhook; e.g.: example.com
+//         domain: "0.0.0.0",
 
-        // Port to listen on; e.g.: 8080
-        port: port
-    }
-})
+//         // Port to listen on; e.g.: 8080
+//         port: port
+//     }
+// })
 
 
 // Enable graceful stop
@@ -144,9 +144,9 @@ process.once('SIGTERM', () => bot.stop('SIGTERM'))
 console.log(`${getNowTime()}: bot started!`);
 console.log(`${getNowTime()}`, mainModel);
 
-app.get("/", (req, res) => res.end());
+// app.get("/", (req, res) => res.end());
 
-const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+// const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-server.keepAliveTimeout = 120 * 1000;
-server.headersTimeout = 120 * 1000;
+// server.keepAliveTimeout = 120 * 1000;
+// server.headersTimeout = 120 * 1000;
