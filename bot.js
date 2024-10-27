@@ -11,7 +11,7 @@ const {
 const app = express();
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
-// const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 process.on('uncaughtException', error => {
     console.log("uncaughtException: ", error);
@@ -132,7 +132,7 @@ bot.launch({
         domain: process.env.DOMAIN,
 
         // Port to listen on; e.g.: 8080
-        // port: port
+        port: port
     }
 })
 
